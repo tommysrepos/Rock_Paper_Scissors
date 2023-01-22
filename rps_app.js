@@ -1,40 +1,64 @@
-function getRandomInt() {
-    return Math.floor(Math.random()*3);
-}
 function getComputerChoice(){
-    let choice = getRandomInt()
+    let choice = Math.floor(Math.random()*3);
     if (choice ==0){
-        return "Rock";
+        return "rock";
     } else if(choice ==1){
-        return "Paper";
+        return "paper";
     }else if(choice ==2){
-        return "Scissors";
+        return "scissors";
     }
 }
-console.log(getComputerChoice(getRandomInt()));
+function getPlayerChoice(){
+    let sign = window.prompt("What is your choice?");
+    return sign.toLowerCase();
+}
 function playRound(playerSelection, computerSelection){
-   if (playerSelection == "Rock" && computerSelection == "Rock"){
-    return "Tie! You both chose rock.";
-   }else if (playerSelection == "Rock" && computerSelection == "Paper"){
-    return "You lose! Paper beats rock.";
-   } else if (playerSelection == "Rock" && computerSelection == "Scissors"){
-    return "You win! Rock beats scissors.";
-   }else if (playerSelection == "Paper" && computerSelection == "Rock"){
-    return "You win! Paper beats rock.";
-   }else if (playerSelection == "Paper" && computerSelection == "Paper"){
-    return "Tie! You both chose paper.";
-   }else if (playerSelection == "Paper" && computerSelection == "Scissors"){
-    return "You lose. Scissors beats paper."
-   }else if (playerSelection == "Scissors" && computerSelection == "Rock"){
-    return "You lose. Rock beats scissors."
-   }else if (playerSelection =="Scissors" && computerSelection == "Paper"){
-    return "You win! Scissors beats paper."
-   }else if(playerSelection == "Scissors" && computerSelection == "Scissors"){
-    return "Tie! You both chose scissors."
-   }else{
-    return "This is not possible."
-   }
-   }
-const playerSelection = "Paper";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection))
+    playerSelection = getPlayerChoice();
+    computerSelection = getComputerChoice();
+    if (playerSelection == "rock" && computerSelection == "scissors"){
+        console.log("win"); 
+        return 3;
+    }else if (playerSelection == "paper" && computerSelection == "rock"){
+        console.log("win"); 
+        return 3;
+    }else if (playerSelection == "scissors" && computerSelection == "paper"){
+        console.log("win"); 
+        return 3;
+    }else if (playerSelection == "rock" && computerSelection == "paper"){
+        console.log("lose"); 
+        return 2;
+    }else if (playerSelection == "paper" && computerSelection == "scissors"){
+        console.log("lose");
+        return 2;
+    }else if (playerSelection == "scissors" && computerSelection == "rock"){
+        console.log("lose"); 
+        return 2;
+    }else if (playerSelection == "rock" && computerSelection == "rock"){
+        console.log("tie");
+        return 1;
+    }else if (playerSelection == "paper" && computerSelection == "paper"){
+        console.log("tie");
+        return 1;
+    }else if(playerSelection == "scissors" && computerSelection == "scissors"){
+        console.log("tie");
+        return 1;
+    }else{
+        console.log("invalid choice");
+    }
+}
+function game(){
+    playerScore = 0;
+    computerScore = 0;
+    tieCounter = 0;
+    while (playerScore<5 && computerScore<5){
+        
+        if (playRound() == 3){
+            playerScore++
+        } else if(2){
+            computerScore++
+        }else if(1){
+            tieCounter++;
+        }
+    }
+}
+console.log(game())
