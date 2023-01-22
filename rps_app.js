@@ -50,15 +50,30 @@ function game(){
     playerScore = 0;
     computerScore = 0;
     tieCounter = 0;
-    while (playerScore<5 && computerScore<5){
-        
-        if (playRound() == 3){
-            playerScore++
+    invalidCounter = 0;
+    do{
+        if (playRound() === 3){
+            playerScore++;
         } else if(2){
-            computerScore++
+            computerScore++;
         }else if(1){
             tieCounter++;
+        }else {
+            invalidCounter++;
         }
     }
+    while (playerScore<5 && computerScore<5);
+    if (playerScore == 5){
+        alert("You won!");
+    }else if(computerScore == 5){
+        alert("You lost.");
+    }
+    let playAgain;
+    if (confirm("Would you like to play again?") == 1){
+        game();
+    }else{
+        console.log("Thanks for playing!");
+    }
 }
+console.log(game())
 console.log(game())
