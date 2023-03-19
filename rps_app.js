@@ -11,7 +11,7 @@ function getComputerChoice(){
 function getPlayerChoice(){
     let sign = window.prompt("What is your choice?");
     if (!sign){
-        getPlayerChoice();
+      sign = window.prompt("What is your choice?");
     }else{
     return sign.toLowerCase();
     }
@@ -54,17 +54,18 @@ function game(){
     let playerScore = 0;
     let computerScore = 0;
     let tieCounter = 0;
-    let invalidCounter = 0;
      do{
-        if (playRound() === 3){
+        var score = playRound();
+        if (score === 3){
             playerScore++;
-        } else if(2){
+        } else if(score === 2){
             computerScore++;
-        }else if(1){
+        }else if(score === 1){
             tieCounter++;
-        }else {
-            invalidCounter++;
         }
+        console.log("playerScore " + playerScore);
+        console.log("computerScore " + computerScore);
+        console.log("tieCounter " + tieCounter);
     }
     while (playerScore<5 && computerScore<5);
     if (playerScore === 5){
@@ -72,11 +73,10 @@ function game(){
     }else if(computerScore === 5){
         alert("You lost.");
     }
-    let playAgain;
     if (confirm("Would you like to play again?") == 1){
         game();
     }else{
         console.log("Thanks for playing!");
     }
 }
-console.log(game())
+console.log(game());
