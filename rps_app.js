@@ -1,3 +1,20 @@
+const optionRock = document.querySelector('#rock');
+optionRock.addEventListener('click', function (e){
+  playRound();
+});
+
+const optionPaper = document.querySelector('#paper');
+optionPaper.addEventListener('click', function (e){
+  playRound();
+  
+});
+
+const optionScissors = document.querySelector('#scissors');
+optionScissors.addEventListener('click', function (e){
+  playRound();
+  
+});
+
 function getComputerChoice(){
     let choice = Math.floor(Math.random()*3);
     if (choice ==0){
@@ -8,14 +25,17 @@ function getComputerChoice(){
         return "scissors";
     }
 }
+
 function getPlayerChoice(){
-    let sign = window.prompt("What is your choice?");
-    if (!sign){
-      sign = window.prompt("What is your choice?");
+    if(document.querySelector('#rock').clicked == true){
+      return "rock";
+    }else if(document.querySelector('#paper').clicked == true){
+      return "paper";
     }else{
-    return sign.toLowerCase();
+      return "scissors";
     }
-}
+  }
+
 function playRound(playerSelection, computerSelection){
     playerSelection = getPlayerChoice();
     computerSelection = getComputerChoice();
@@ -50,7 +70,7 @@ function playRound(playerSelection, computerSelection){
         console.log("invalid choice");
     }
 }
-function game(){
+/*function game(){
     let playerScore = 0;
     let computerScore = 0;
     let tieCounter = 0;
@@ -79,4 +99,4 @@ function game(){
         console.log("Thanks for playing!");
     }
 }
-console.log(game());
+console.log(game()); */
